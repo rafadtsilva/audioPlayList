@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+body {
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#container {
+  width: 400px;
+  height: 500px;
+  background-color: grey;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.list {
+  width: 350px;
+  height: 350px;
+  border: 2px solid white;
+  padding: 10px;
+}
+
+p {
+  color: white;
+  line-height: 30px;
+  font-size: 20px;
+  cursor: pointer;
+}
