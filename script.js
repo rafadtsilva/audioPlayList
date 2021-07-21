@@ -19,13 +19,23 @@
 let player = document.querySelector('.player');
 let musica = document.getElementsByTagName('p');
 const lista = ["assets/musics/A Vitoria Chegou.mp3","assets/musics/Cem Ovelhas.mp3", "assets/musics/Diário de um Vencedor.mp3", "assets/musics/Não Pare.mp3", "assets/musics/o maior troféu.mp3", "assets/musics/Eu Vencerei.mp3"] 
-console.log(player)
+console.log(player);
+let track = 0;
+
+player.src = lista[track];
 
 const selectMusic = function () {
   console.log(lista[this.dataset.n])
   player.src = lista[this.dataset.n];
   player.play();
+  track = this.dataset.n;
 }
+
+player.addEventListener('ended', function() {
+  track++;
+  player.src = lista[track];
+  player.play();
+})
 
 musica[0].addEventListener('click', selectMusic);
 musica[1].addEventListener('click', selectMusic);
