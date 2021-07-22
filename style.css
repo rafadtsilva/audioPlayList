@@ -24,16 +24,53 @@ body {
   flex-direction: column;
 }
 
-.list {
+header {
+  width: 350px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#favorito-icon {
+  margin-right: 3px;
+  width: 34px;
+  height: 34px;
+  background-color: rgba(255, 255, 255, 1);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+#favorito-icon:hover {
+  width: 40px;
+  height: 40px;
+  margin-right: 0;
+}
+
+
+.playlist {
   width: 350px;
   height: 350px;
   border: 2px solid white;
   padding: 10px;
+  list-style: none;
+  /* display: flex; */
+  
 }
 
-p {
+.playlist li {
   color: white;
   line-height: 30px;
   font-size: 20px;
   cursor: pointer;
+  display: flex;
+  margin: 5px 0;
+}
+
+.playlist li:hover {
+  background-color: rgba(255, 255, 255, 0.197);
+}
+
+.playlist li img {
+  width: 25px;
+  margin-right: 5px;
 }
