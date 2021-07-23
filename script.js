@@ -4,12 +4,23 @@ const selectMusic = function () {
   musicas[track].pause();
   musicas[track].currentTime = 0;
 
-  console.log(musicas[track]);
-
   track = this.dataset.n;
-  // console.log(faixa[track]);
 
-  // faixa[track].controls = true;
+  musicas[track].controls = true;
+  musicas[track].play();
+
+  musicNumber[0].innerHTML = `Música ${parseInt(track)+1}`;
+}
+
+//quando a música termina automático faz a próxima música começar
+const proximaMusica = function () {
+
+  musicas[track].controls = false;
+  musicas[track].pause();
+  musicas[track].currentTime = 0;
+
+  track++;
+
   musicas[track].controls = true;
   musicas[track].play();
 
@@ -33,39 +44,24 @@ let faixa = [];
 
 //CRIANDO TAG AUDIO DAS MUSICAS
 lista.forEach((element, item) => {
+  
   //CRIANDO ARRAY COM MUSICAS
   player.innerHTML += musicInit; //a div player recebe a tag audio configurada em forma de string
   player.getElementsByTagName('audio')[item].src = element; //adiciona o endereço da música
   
-
   //QUANDO CLICA NA MUSICA ELE CHAMA A FUNÇÃO QUE EXECUTA A MUSICA CLICADA
+
   musicList[item].addEventListener('click', selectMusic);
-  console.log(musicList[item])
-
-  musicas[item].addEventListener('ended', proximaMusica);
-
 });
 
-console.log(musicas);
-console.log(player);
+//add evento ended
+
+lista.forEach((element, item) => {
+  
+  musicas[item].addEventListener('ended', proximaMusica);
+
+})
 
 musicas[0].controls = true;
-
-// player.innerHTML = faixa[0].outerHTML;
-musicas[0].addEventListener('ended', proximaMusica);
 musicNumber[0].innerHTML = `Música ${parseInt(track)+1}`;
 
-
-function proximaMusica () {
-
-  musicas[track].controls = false;
-  musicas[track].pause();
-  musicas[track].currentTime = 0;
-
-  track++;
-
-  musicas[track].controls = true;
-  musicas[track].play();
-
-  musicNumber[0].innerHTML = `Música ${parseInt(track)+1}`;
-}
