@@ -3,15 +3,20 @@ const selectMusic = function () {
   faixa[track].pause();
   faixa[track].currentTime = 0;
 
-  faixa[this.dataset.n].play();
-
   track = this.dataset.n;
 
-  player.innerHTML = `<p>Musica ${parseInt(track) + 1}</p>` //NÃO TA PRONTO
+  faixa[track].controls = true;
+  faixa[track].autoplay=true;
+  player.innerHTML = faixa[track].outerHTML;
+  
+  console.log(musicas)
 }
 
 //PEGANDO HTMLS
 let player = document.querySelector('.player'); //NÃO TA PRONTO
+let musicas = document.getElementsByTagName('audio');
+console.log(musicas)
+
 let musicaName = document.getElementsByTagName('p');
 const play = document.getElementById('play');
 const stop = document.getElementById('stop');
