@@ -1,8 +1,10 @@
 //DA PAUSE NA ANTIGA E EXECUTA MUSICA SELECIONADA
 const selectMusic = function () {
+  musicas[musicas.length-1].controls = false;
   musicas[track].controls = false;
   musicas[track].pause();
   musicas[track].currentTime = 0;
+  musicList[track].style.backgroundColor = "#ffffff5a";
 
   track = this.dataset.n;
 
@@ -10,6 +12,7 @@ const selectMusic = function () {
   musicas[track].play();
 
   musicNumber[0].innerHTML = `Música ${parseInt(track)+1}`;
+  musicList[track].style.backgroundColor = "#b38d97";
 }
 
 //quando a música termina automático faz a próxima música começar
@@ -18,6 +21,7 @@ const proximaMusica = function () {
   musicas[track].controls = false;
   musicas[track].pause();
   musicas[track].currentTime = 0;
+  musicList[track].style.backgroundColor = "#ffffff5a";
 
   track++;
 
@@ -25,6 +29,7 @@ const proximaMusica = function () {
   musicas[track].play();
 
   musicNumber[0].innerHTML = `Música ${parseInt(track)+1}`;
+  musicList[track].style.backgroundColor = "#b38d97";
 }
 
 //PEGANDO HTMLS
@@ -35,7 +40,7 @@ let musicList = document.getElementsByTagName('li');
 let musicNumber = document.getElementsByClassName('music-number');
 
 
-player.innerHTML = ""; //apaga o player após pegar a variavél audio
+// player.innerHTML = ""; //apaga o player após pegar a variavél audio
 
 //VARIAVEIS
 const lista = ["assets/musics/A Vitoria Chegou.mp3","assets/musics/Cem Ovelhas.mp3", "assets/musics/Diário de um Vencedor.mp3", "assets/musics/Não Pare.mp3", "assets/musics/o maior troféu.mp3", "assets/musics/Eu Vencerei.mp3"] 
@@ -47,7 +52,7 @@ lista.forEach((element, item) => {
   
   //CRIANDO ARRAY COM MUSICAS
   player.innerHTML += musicInit; //a div player recebe a tag audio configurada em forma de string
-  player.getElementsByTagName('audio')[item].src = element; //adiciona o endereço da música
+  musicas[item].src = element; //adiciona o endereço da música
   
   //QUANDO CLICA NA MUSICA ELE CHAMA A FUNÇÃO QUE EXECUTA A MUSICA CLICADA
 
@@ -62,6 +67,6 @@ lista.forEach((element, item) => {
 
 })
 
-musicas[0].controls = true;
-musicNumber[0].innerHTML = `Música ${parseInt(track)+1}`;
+musicas[musicas.length-1].controls = true;
+// musicNumber[0].innerHTML = `Música ${parseInt(track)+1}`;
 
